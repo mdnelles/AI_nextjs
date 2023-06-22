@@ -17,9 +17,9 @@ const RootLayout = ({ children }) => (
                <div className='gradient' />
             </div>
 
-            <main className='app'>
+            <main className='app flex flex-col items-center'>
                <Nav />
-               {children}
+               <div className='flex flex-col items-center'>{children}</div>
             </main>
          </Provider>
       </body>
