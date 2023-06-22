@@ -81,10 +81,10 @@
    @apply rounded-full border border-black bg-black py-1.5 px-5 text-white transition-all hover:bg-white hover:text-black text-center text-sm font-inter flex items-center justify-center;
 }
 .blue_btn {
-   @apply rounded-full border border-blue-400 bg-sky-600 py-1.5 px-5 text-white transition-all hover:bg-white hover:text-sky-600 text-center text-sm font-inter flex items-center justify-center;
+   @apply rounded-full border border-blue-600 bg-sky-600 py-1.5 px-5 text-white transition-all hover:bg-white hover:text-sky-600 text-center text-sm font-inter flex items-center justify-center;
 }
 .outline_btn_blue {
-   @apply rounded-full border border-blue-400 bg-transparent py-1.5 px-5 text-sky-600 transition-all hover:bg-sky-600 hover:text-white text-center text-sm font-inter flex items-center justify-center;
+   @apply rounded-full border border-blue-600 bg-transparent py-1.5 px-5 text-sky-600 transition-all hover:bg-sky-600 hover:text-white text-center text-sm font-inter flex items-center justify-center;
 }
 .outline_btn_blue_blue {
    @apply rounded-full border border-blue-400 bg-transparent py-1.5 px-5 text-blue-400 transition-all hover:bg-blue-400 hover:text-white text-center text-sm font-inter flex items-center justify-center;
