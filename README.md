@@ -1,9 +1,6 @@
 # AI NextJS project
 
-
-![ChatGpt](/public/assets/images/chatLogo.png)
-
-<img src="/public/assets/images/chatLogo.png" width="100" height="100">
+<img src="/public/assets/images/chatLogo.png" width="80" height="80" style="border-radius=5px;border=1px solid #333">
 
 ![MongoDB](https://raw.githubusercontent.com/mdnelles/AI_nextjs/main/public/assets/images/mongo2.png =100x100)
 ![Next.js](https://raw.githubusercontent.com/mdnelles/AI_nextjs/main/public/assets/images/next2.png =100x100)
