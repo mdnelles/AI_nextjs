@@ -1,9 +1,10 @@
 # AI NextJS project
-
-<img src="/public/assets/images/chatLogo.png" width="80" height="80" style="border-radius: 5px; border: 1px solid #333;">
-<img src="/public/assets/images/mongo2.png" width="80" height="80" style="border-radius: 5px; border: 1px solid #333;">
-<img src="/public/assets/images/next2.png" width="80" height="80" style="border-radius: 5px; border: 1px solid #333;">
-<img src="/public/assets/images/react2.png" width="80" height="80" style="border-radius: 5px; border: 1px solid #333;">
+<p float="left">
+  <img src="/public/assets/images/chatLogo.png" width="80" height="80" style="border-radius: 5px; border: 1px solid #333;">
+  <img src="/public/assets/images/mongo2.png" width="80" height="80" style="border-radius: 5px; border: 1px solid #333;">
+  <img src="/public/assets/images/next2.png" width="80" height="80" style="border-radius: 5px; border: 1px solid #333;">
+  <img src="/public/assets/images/react2.png" width="80" height="80" style="border-radius: 5px; border: 1px solid #333;">
+</p>
 
 ### .env file NEXTAUTH
 
