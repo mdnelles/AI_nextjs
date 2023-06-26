@@ -1,4 +1,4 @@
-import Feed from "@components/Feed";
+import Feed from "@/components/Feed";
 import Image from "next/image";
 
 const size = 50;
@@ -9,7 +9,7 @@ const Home = () => (
          AI Wall Post
          <br className='max-md:hidden' />
       </h1>
-      <div class='flex justify-center gap-2'>
+      <div className='flex justify-center gap-2'>
          <div>
             <Image
                src='/assets/images/chatLogo.png'

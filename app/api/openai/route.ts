@@ -6,7 +6,7 @@ const configuration = new Configuration({
 
 const openai = new OpenAIApi(configuration);
 
-export const POST = async (req) => {
+export const POST = async (req: { json: () => any }) => {
    try {
       const body = await req.json();
       if (body.prompt !== undefined) {
@@ -21,7 +21,7 @@ export const POST = async (req) => {
       } else {
          return new Response("No prompt provided.", { status: 405 });
       }
-   } catch (error) {
+   } catch (error: any) {
       if (error.response) {
          console.log(error.response.status);
          console.log(error.response.data);
@@ -34,8 +34,5 @@ export const POST = async (req) => {
             status: 500,
          });
       }
-      return new Response("Failed to fetch prompts created by user", {
-         status: 500,
-      });
    }
 };

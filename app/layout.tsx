@@ -1,15 +1,18 @@
-import "@styles/globals.css";
+import "@/styles/globals.css";
 
-import Nav from "@components/Nav";
-import Provider from "@components/Provider";
+import Nav from "@/components/Nav";
+import Provider from "@/components/Provider";
 
 export const metadata = {
    title: "NEXTAI",
    description: "Discover & Share AI Prompts",
 };
 
-console.log(process.env);
-const RootLayout = ({ children }) => (
+interface RootLayoutProps {
+   children: React.ReactNode;
+}
+
+const RootLayout = ({ children }: RootLayoutProps) => (
    <html lang='en'>
       <body>
          <Provider>

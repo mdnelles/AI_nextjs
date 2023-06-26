@@ -4,7 +4,7 @@ import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
-import Profile from "@components/Profile";
+import Profile from "@/components/Profile";
 
 const MyProfile = () => {
    const router = useRouter();
@@ -23,11 +23,11 @@ const MyProfile = () => {
       if (session?.user.id) fetchPosts();
    }, [session?.user.id]);
 
-   const handleEdit = (post) => {
+   const handleEdit = (post: { _id: any }) => {
       router.push(`/update-prompt?id=${post._id}`);
    };
 
-   const handleDelete = async (post) => {
+   const handleDelete = async (post: { _id: { toString: () => any } }) => {
       const hasConfirmed = confirm(
          "Are you sure you want to delete this prompt?"
       );
@@ -39,7 +39,7 @@ const MyProfile = () => {
             });
 
             const filteredPosts = myPosts.filter(
-               (item) => item._id !== post._id
+               (item: any) => item._id !== post._id
             );
 
             setMyPosts(filteredPosts);
