@@ -46,6 +46,15 @@ const Home = () => (
                className='object-contain rounded-full'
             />
          </div>
+         <div>
+            <Image
+               src='/assets/images/google.png'
+               alt='logo'
+               width={size}
+               height={size}
+               className='object-contain rounded-full'
+            />
+         </div>
       </div>
       <p className='desc text-center'>
          Please share an insightful question you have posed to AI by asking it
