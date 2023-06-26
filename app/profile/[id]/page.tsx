@@ -3,32 +3,39 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 
-import Profile from "@components/Profile";
+import Profile from "@/components/Profile";
 
-const UserProfile = ({ params }) => {
-  const searchParams = useSearchParams();
-  const userName = searchParams.get("name");
+type UserProfileProps = {
+   params: any;
+};
 
-  const [userPosts, setUserPosts] = useState([]);
+const UserProfile = ({ params }: UserProfileProps) => {
+   const { handleEdit, handleDelete } = params;
+   const searchParams = useSearchParams();
+   const userName = searchParams.get("name");
 
-  useEffect(() => {
-    const fetchPosts = async () => {
-      const response = await fetch(`/api/users/${params?.id}/posts`);
-      const data = await response.json();
+   const [userPosts, setUserPosts] = useState([]);
 
-      setUserPosts(data);
-    };
+   useEffect(() => {
+      const fetchPosts = async () => {
+         const response = await fetch(`/api/users/${params?.id}/posts`);
+         const data = await response.json();
 
-    if (params?.id) fetchPosts();
-  }, [params.id]);
+         setUserPosts(data);
+      };
 
-  return (
-    <Profile
-      name={userName}
-      desc={`Welcome to ${userName}'s personalized profile page. Explore ${userName}'s exceptional prompts and be inspired by the power of their imagination`}
-      data={userPosts}
-    />
-  );
+      if (params?.id) fetchPosts();
+   }, [params.id]);
+
+   return (
+      <Profile
+         name={userName}
+         desc={`Welcome to ${userName}'s personalized profile page. Explore ${userName}'s exceptional prompts and be inspired by the power of their imagination`}
+         data={userPosts}
+         handleEdit={handleEdit}
+         handleDelete={handleDelete}
+      />
+   );
 };
 
 export default UserProfile;
