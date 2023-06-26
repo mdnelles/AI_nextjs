@@ -16,7 +16,7 @@ const MyProfile = () => {
       const fetchPosts = async () => {
          const response = await fetch(`/api/users/${session?.user.id}/posts`);
          const data = await response.json();
-
+         console.log(data);
          setMyPosts(data);
       };
 
@@ -51,7 +51,7 @@ const MyProfile = () => {
 
    return (
       <Profile
-         name='My'
+         name='1234'
          desc='Welcome to your personalized profile page. Here is where we keep track of all your prompts.'
          data={myPosts}
          handleEdit={handleEdit}

@@ -10,6 +10,8 @@ interface PostCardProps {
 
 const Profile = (props: PostCardProps) => {
    const { name, desc, data, handleEdit, handleDelete } = props;
+
+   console.log(props);
    return (
       <section className='w-full'>
          <h1 className='head_text text-left'>
