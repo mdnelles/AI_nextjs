@@ -18,7 +18,6 @@ export const GET = async (_: NextApiRequest, params: any): Promise<any> => {
 
 export const PATCH = async (request: any, { params }: any) => {
    try {
-      console.log(" PATCH ");
       const { prompt, tag } = await request.json();
 
       await connectToDB();
