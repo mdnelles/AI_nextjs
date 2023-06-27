@@ -4,10 +4,9 @@ import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { signIn, signOut, useSession, getProviders } from "next-auth/react";
-import { redirect } from "next/navigation";
 
 const Nav = () => {
-   const { data: session } = useSession();
+   const { data: session, status } = useSession();
 
    const [providers, setProviders] = useState<any>(null);
    const [toggleDropdown, setToggleDropdown] = useState(false);
@@ -19,7 +18,6 @@ const Nav = () => {
       await signOut();
       setTimeout(() => setSigningOut(false), 500);
       window.location.href = "/";
-      //setTimeout(() => redirect("/"), 600);
    };
 
    const handleSignIn = async (provider: any) => {

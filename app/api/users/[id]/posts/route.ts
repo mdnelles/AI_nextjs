@@ -2,17 +2,11 @@ import Prompt from "@/models/prompt";
 import { connectToDB } from "@/utils/database";
 import { NextApiRequest } from "next";
 
-interface ParamsType {
-   [key: string]: any;
-}
-
-export const GET = async (request: NextApiRequest, params: ParamsType) => {
+export const GET = async (_: NextApiRequest, params: any) => {
+   const creator = params.id || params.params.id;
    try {
       await connectToDB();
-
-      const prompts = await Prompt.find({ creator: params.id }).populate(
-         "creator"
-      );
+      const prompts = await Prompt.find({ creator }).populate("creator");
 
       return new Response(JSON.stringify(prompts), { status: 200 });
    } catch (error) {
