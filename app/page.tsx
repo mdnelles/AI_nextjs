@@ -5,7 +5,7 @@ const size = 50;
 
 const Home = () => (
    <section className='w-full flex-center flex-col'>
-      <h1 className='head_text text-center'>
+      <h1 className='head_text text-center mb-4'>
          AI Wall Post
          <br className='max-md:hidden' />
       </h1>
