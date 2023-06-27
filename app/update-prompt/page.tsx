@@ -16,6 +16,8 @@ const UpdatePrompt = () => {
    useEffect(() => {
       const getPromptDetails = async () => {
          const response = await fetch(`/api/prompt/${promptId}`);
+         console.log("..............................response");
+         console.log(response);
          const data = await response.json();
 
          setPost({
@@ -27,20 +29,25 @@ const UpdatePrompt = () => {
       if (promptId) getPromptDetails();
    }, [promptId]);
 
-   const updatePrompt = async (e) => {
+   const updatePrompt = async (e: { preventDefault: () => void }) => {
       e.preventDefault();
       setIsSubmitting(true);
-      console.log(" ..post");
+      console.log(" ..post (inside updatePrompt)");
       console.log(post);
+
+      const { prompt, tag } = post;
 
       if (!promptId) return alert("Missing PromptId!");
 
       try {
          const response = await fetch(`/api/prompt/${promptId}`, {
             method: "PATCH",
+            headers: {
+               "Content-Type": "application/json",
+            },
             body: JSON.stringify({
-               prompt: post.prompt,
-               tag: post.tag,
+               prompt,
+               tag,
             }),
          });
 
@@ -58,9 +65,9 @@ const UpdatePrompt = () => {
       <Form
          type='Edit'
          post={post}
-         setPost={setPost}
          submitting={submitting}
          handleSubmit={updatePrompt}
+         setPost={setPost}
       />
    );
 };
