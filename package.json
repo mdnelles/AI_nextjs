@@ -30,6 +30,8 @@
    },
    "devDependencies": {
       "@types/body-parser": "^1.19.2",
-      "cross-env": "^7.0.3"
+      "cross-env": "^7.0.3",
+      "eslint": "8.43.0",
+      "eslint-config-next": "13.4.7"
    }
 }

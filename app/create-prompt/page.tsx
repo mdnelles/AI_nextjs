@@ -5,15 +5,16 @@ import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
 import Form from "@/components/Form";
+import { Session } from "next-auth";
 
 const CreatePrompt = () => {
    const router = useRouter();
-   const { data: session }: { data: any } = useSession();
+   const { data: session }: { data: Session | null } = useSession();
 
    const [submitting, setIsSubmitting] = useState(false);
    const [post, setPost] = useState({ prompt: "", tag: "" });
 
-   const createPrompt = async (e: { preventDefault: () => void }) => {
+   const createPrompt = async (e: React.MouseEvent<HTMLButtonElement>) => {
       e.preventDefault();
       setIsSubmitting(true);
 
