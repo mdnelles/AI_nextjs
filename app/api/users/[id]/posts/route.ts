@@ -1,8 +1,8 @@
 import Prompt from "@/models/prompt";
 import { connectToDB } from "@/utils/database";
-import { NextApiRequest } from "next";
+//import { any } from "next";
 
-export const GET = async (_: NextApiRequest, params: any) => {
+export const GET = async (_: any, params: any) => {
    const creator = params.id || params.params.id;
    try {
       await connectToDB();

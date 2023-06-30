@@ -4,14 +4,21 @@ import { useState, useEffect } from "react";
 
 import PromptCard from "./PromptCard";
 
-const PromptCardList = ({ data, handleTagClick }) => {
+interface PromptCardListProps {
+   data: any;
+   handleTagClick: (tag: string) => void;
+}
+
+const PromptCardList = ({ data, handleTagClick }: PromptCardListProps) => {
    return (
       <div className='mt-1 prompt_layout'>
-         {data.map((post) => (
+         {data.map((post: any) => (
             <PromptCard
                key={post._id}
                post={post}
                handleTagClick={handleTagClick}
+               handleEdit={undefined}
+               handleDelete={undefined}
             />
          ))}
       </div>
@@ -23,7 +30,7 @@ const Feed = () => {
 
    // Search states
    const [searchText, setSearchText] = useState("");
-   const [searchTimeout, setSearchTimeout] = useState(null);
+   //const [searchTimeout, setSearchTimeout] = useState(null);
    const [searchedResults, setSearchedResults] = useState([]);
 
    const fetchPosts = async () => {
@@ -37,30 +44,30 @@ const Feed = () => {
       fetchPosts();
    }, []);
 
-   const filterPrompts = (searchtext) => {
+   const filterPrompts = (searchtext: string) => {
       const regex = new RegExp(searchtext, "i"); // 'i' flag for case-insensitive search
       return allPosts.filter(
-         (item) =>
+         (item: any) =>
             regex.test(item.creator.username) ||
             regex.test(item.tag) ||
             regex.test(item.prompt)
       );
    };
 
-   const handleSearchChange = (e) => {
-      clearTimeout(searchTimeout);
+   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+      //clearTimeout(searchTimeout);
       setSearchText(e.target.value);
 
       // debounce method
-      setSearchTimeout(
-         setTimeout(() => {
-            const searchResult = filterPrompts(e.target.value);
-            setSearchedResults(searchResult);
-         }, 500)
-      );
+      //setSearchTimeout(
+      setTimeout(() => {
+         const searchResult = filterPrompts(e.target.value);
+         setSearchedResults(searchResult);
+      }, 500);
+      //);
    };
 
-   const handleTagClick = (tagName) => {
+   const handleTagClick = (tagName: any) => {
       setSearchText(tagName);
 
       const searchResult = filterPrompts(tagName);

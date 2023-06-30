@@ -5,7 +5,7 @@ interface FormProps {
    type: string;
    post: { prompt: string; tag: string };
    submitting: boolean;
-   handleSubmit: (e: { preventDefault: () => void }) => void;
+   handleSubmit: (e: any) => void;
    setPost: any;
 }
 const Form = ({ type, post, setPost, submitting, handleSubmit }: FormProps) => {

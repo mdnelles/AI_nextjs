@@ -6,7 +6,7 @@ const configuration = new Configuration({
 
 const openai = new OpenAIApi(configuration);
 
-export const POST = async (req: { json: () => any }) => {
+export const POST = async (req: any) => {
    try {
       const body = await req.json();
       if (body.prompt !== undefined) {
