@@ -77,6 +77,9 @@ const PromptCard = (props: PromptCardProps) => {
          <p className='my-4 font-satoshi text-sm text-gray-700'>
             {post.prompt}
          </p>
+         <p className='my-4 font-satoshi text-sm text-gray-500 bg-blue-200 rounded-md p-3'>
+            {post.airesp}
+         </p>
          <p
             className='font-inter text-sm blue_gradient cursor-pointer'
             onClick={() => handleTagClick && handleTagClick(post.tag)}
