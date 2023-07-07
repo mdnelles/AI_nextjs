@@ -17,7 +17,15 @@
    padding: 120px 24px 160px 24px;
    pointer-events: none;
 }
-
+#github-link {
+   position: fixed;
+   bottom: 10px;
+   right: 10px;
+   z-index: 9999;
+   width: 80px;
+   height: 40px;
+   cursor: pointer;
+}
 .main:before {
    background: radial-gradient(circle, rgba(2, 0, 36, 0) 0, #fafafa 100%);
    position: absolute;
