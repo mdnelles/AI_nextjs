@@ -62,6 +62,17 @@ const Home = () => (
       </p>
 
       <Feed />
+      <div id='github-link'>
+         <a href='https://github.com/mdnelles/AI_nextjs' target='_blank'>
+            <Image
+               src='/assets/icons/GitHub_Logo.png'
+               alt='mdnelles'
+               width={80}
+               height={40}
+               className='object-contain rounded-full'
+            />
+         </a>
+      </div>
    </section>
 );
 
