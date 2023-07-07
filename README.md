@@ -38,3 +38,10 @@ https://console.cloud.google.com/apis/credentials
 GOOGLE_ID=<your google id>
 GOOGLE_CLIENT_SECRET=<your google secret>
 ```
+
+### deply command with pm2
+
+-  clone repo in cloud server
+-  run `npm install`
+-  run `npm run build`
+-  pm2 start npm --name nextai -- run start -- -p 3000
