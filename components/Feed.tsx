@@ -3,6 +3,8 @@
 import { useState, useEffect } from "react";
 
 import PromptCard from "./PromptCard";
+import { setPromptState } from "store/reducer/prompt";
+import { dispatch } from "store";
 
 interface PromptCardListProps {
    data: any;
@@ -38,6 +40,7 @@ const Feed = () => {
       const data = await response.json();
       console.log(data);
       setAllPosts(data);
+      dispatch(setPromptState(data));
    };
 
    useEffect(() => {

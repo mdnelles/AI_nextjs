@@ -1,11 +1,12 @@
 import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
-import { promptSlice } from "./reducer/prompt-slice";
+import { promptSlice } from "./reducer/prompt";
 import { createWrapper } from "next-redux-wrapper";
 
 const makeStore = () =>
    configureStore({
       reducer: {
-         [promptSlice.name]: promptSlice.reducer,
+         //[promptSlice.name]: promptSlice.reducer,
+         prompt: promptSlice,
       },
       devTools: true,
    });
