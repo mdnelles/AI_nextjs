@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import type { PayloadAction } from "@reduxjs/toolkit";
 import { AppState } from "../store";
 import { HYDRATE } from "next-redux-wrapper";
 import { Prompt } from "types/prompt";
@@ -6,10 +7,14 @@ import { Prompt } from "types/prompt";
 // Type for our state
 
 //interface PromptState extends Array<typeof PromptObj> {}
-type PromptState = Array<Prompt>;
+type PromptState = {
+   arr: Prompt[];
+};
 
 // Initial state
-const initialState: PromptState = [];
+const initialState: PromptState = {
+   arr: [],
+};
 
 // Actual Slice
 export const promptSlice = createSlice({
@@ -17,8 +22,8 @@ export const promptSlice = createSlice({
    initialState,
    reducers: {
       // Action to set the promptentication status
-      setPromptState(state, action) {
-         //state.promptState = action.payload;
+      setPromptState(state, action: PayloadAction<Prompt[] | null>) {
+         state.arr = action.payload || [];
       },
    },
 
