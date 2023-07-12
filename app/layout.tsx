@@ -18,7 +18,7 @@ const RootLayout = ({ children }: RootLayoutProps) => (
       <body>
          <ReduxProvider prompt={undefined}>
             <Provider>
-               <div className='main'>
+               <div className='main other'>
                   <div className='gradient' />
                </div>
 
