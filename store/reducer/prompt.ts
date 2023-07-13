@@ -22,8 +22,10 @@ export const promptSlice = createSlice({
    initialState,
    reducers: {
       // Action to set the promptentication status
-      setPromptState(state, action: PayloadAction<Prompt[] | null>) {
-         state.arr = action.payload || [];
+      setPromptState(state, action: any) {
+         console.log("action.payload: ", action.payload);
+         const { arr } = action.payload || [];
+         state.arr = arr;
       },
    },
 

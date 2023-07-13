@@ -37,10 +37,11 @@ const Feed = () => {
 
    const fetchPosts = async () => {
       const response = await fetch("/api/prompt");
-      const data = await response.json();
-      console.log(data);
-      setAllPosts(data);
-      dispatch(setPromptState(data));
+      const prompts = await response.json();
+      console.log("....prompts");
+      console.log(prompts);
+      setAllPosts(prompts);
+      //dispatch(setPromptState({ arr: prompts }));
    };
 
    useEffect(() => {

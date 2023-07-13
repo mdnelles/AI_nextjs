@@ -1,15 +1,15 @@
+import { PostCardProps, Prompt, PromptState } from "types/prompt";
 import PromptCard from "./PromptCard";
-
-interface PostCardProps {
-   name?: string | any;
-   desc: string;
-   data: any;
-   handleEdit: any;
-   handleDelete: any;
-}
+import { useSelector } from "react-redux";
+import { useEffect } from "react";
 
 const Profile = (props: PostCardProps) => {
-   const { name, desc, data, handleEdit, handleDelete } = props;
+   const { name, desc, handleEdit, handleDelete } = props;
+   const prompts: PromptState = useSelector((state: any) => state.prompt);
+
+   useEffect(() => {
+      // reload
+   }, [prompts]);
 
    return (
       <section className='w-full'>
@@ -19,7 +19,7 @@ const Profile = (props: PostCardProps) => {
          <p className='desc text-left'>{desc}</p>
 
          <div className='mt-10 prompt_layout'>
-            {data.map((post: any) => (
+            {prompts.arr.map((post: any) => (
                <PromptCard
                   key={post._id}
                   post={post}
