@@ -6,7 +6,7 @@ const makeStore = () =>
    configureStore({
       reducer: {
          //[promptSlice.name]: promptSlice.reducer,
-         prompt: promptSlice,
+         prompt: promptSlice.reducer,
       },
       devTools: true,
    });

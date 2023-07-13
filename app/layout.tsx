@@ -16,7 +16,7 @@ interface RootLayoutProps {
 const RootLayout = ({ children }: RootLayoutProps) => (
    <html lang='en'>
       <body>
-         <ReduxProvider prompt={undefined}>
+         <ReduxProvider>
             <Provider>
                <div className='main'>
                   <div className='gradient' />

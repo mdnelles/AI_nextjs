@@ -12,3 +12,14 @@ export interface Prompt {
    __v: Number;
    _id: String;
 }
+export interface PromptState {
+   arr: Prompt[];
+}
+
+export interface PostCardProps {
+   name?: string | any;
+   desc: string;
+   data: any;
+   handleEdit: any;
+   handleDelete: any;
+}

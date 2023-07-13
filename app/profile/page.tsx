@@ -5,26 +5,37 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
 import Profile from "@/components/Profile";
+import { setPromptState } from "store/reducer/prompt";
+import { useSelector } from "react-redux";
+import { Prompt, PromptState } from "types/prompt";
 
 const MyProfile = () => {
    const router = useRouter();
    const { data: session } = useSession();
-
-   const [myPosts, setMyPosts] = useState([]);
+   const prompts: PromptState = useSelector((state: any) => state.prompt);
 
    useEffect(() => {
       const fetchPosts = async () => {
          const response = await fetch(`/api/users/${session?.user.id}/posts`);
-         console.log(response);
-         const data = await response.json();
-         setMyPosts(data);
+         const prompts = await response.json();
+         console.log("prompts");
+         console.log(prompts);
+         setPromptState({ arr: prompts });
       };
 
       if (session?.user.id) fetchPosts();
    }, [session?.user.id]);
 
-   const handleEdit = (post: { _id: any }) => {
+   const handleEdit = (post: Prompt) => {
       router.push(`/update-prompt?id=${post._id}`);
+      // now update the prompt state arr
+      const updatedPosts: Prompt[] = prompts.arr.map((item: any) => {
+         if (item._id === post._id) {
+            return { ...item, prompt: post.prompt };
+         }
+         return item;
+      });
+      setPromptState({ arr: updatedPosts });
    };
 
    const handleDelete = async (post: any) => {
@@ -38,11 +49,10 @@ const MyProfile = () => {
                method: "DELETE",
             });
 
-            const filteredPosts = myPosts.filter(
-               (item: any) => item._id !== post._id
-            );
-
-            setMyPosts(filteredPosts);
+            setPromptState({
+               ...prompts,
+               arr: prompts.arr.filter((item: any) => item._id !== post._id),
+            });
          } catch (error) {
             console.log(error);
          }
@@ -53,9 +63,9 @@ const MyProfile = () => {
       <Profile
          name='My'
          desc='Welcome to your personalized profile page. Here is where we keep track of all your prompts.'
-         data={myPosts}
          handleEdit={handleEdit}
          handleDelete={handleDelete}
+         data={undefined}
       />
    );
 };
