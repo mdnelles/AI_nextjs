@@ -1,11 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 
 import promptsReducer from "./reducer/prompt";
+import userReducer from "./reducer/user";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 
 export const store = configureStore({
    reducer: {
       prompts: promptsReducer,
+      user: userReducer,
    },
 });
 

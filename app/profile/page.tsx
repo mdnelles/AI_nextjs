@@ -9,13 +9,16 @@ import { clearPrompts, setPrompts } from "store/reducer/prompt";
 import { useSelector } from "react-redux";
 import { Prompt, PromptState } from "types/prompt";
 import { dispatch } from "store";
+import { setUser } from "store/reducer/user";
+import { UserState } from "@/types/user";
 
 const MyProfile = () => {
    const router = useRouter();
    const { data: session } = useSession();
-   console.log("------session-----");
-   console.log(session);
+   const user: UserState = useSelector((state: any) => state.user);
    const prompts: PromptState = useSelector((state: any) => state.prompts);
+
+   dispatch(setUser({ ...user, details: session?.user }));
 
    useEffect(() => {
       const fetchPosts = async () => {
