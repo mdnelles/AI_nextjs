@@ -5,8 +5,7 @@ import { createWrapper } from "next-redux-wrapper";
 const makeStore = () =>
    configureStore({
       reducer: {
-         //[promptSlice.name]: promptSlice.reducer,
-         prompt: promptSlice.reducer,
+         prompts: promptSlice.reducer,
       },
       devTools: true,
    });
