@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
-import { Prompt, PromptState } from "types/prompt";
+import { Prompt, PromptState } from "@/types/prompt";
 
 const initialState: PromptState = {
    arr: [],
