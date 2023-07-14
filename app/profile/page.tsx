@@ -5,54 +5,53 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
 import Profile from "@/components/Profile";
-import { setPromptState } from "store/reducer/prompt";
+import { clearPrompts, setPrompts } from "store/reducer/prompt";
 import { useSelector } from "react-redux";
 import { Prompt, PromptState } from "types/prompt";
+import { dispatch } from "store";
 
 const MyProfile = () => {
    const router = useRouter();
    const { data: session } = useSession();
-   const prompts: PromptState = useSelector((state: any) => state.prompt);
+   console.log("------session-----");
+   console.log(session);
+   const prompts: PromptState = useSelector((state: any) => state.prompts);
 
    useEffect(() => {
       const fetchPosts = async () => {
          const response = await fetch(`/api/users/${session?.user.id}/posts`);
-         const prompts = await response.json();
-         console.log("prompts");
+         const prompts: Prompt[] = await response.json();
+         console.log("prompts ... 333");
          console.log(prompts);
-         setPromptState({ arr: prompts });
+         dispatch(setPrompts(prompts));
       };
 
       if (session?.user.id) fetchPosts();
    }, [session?.user.id]);
 
-   const handleEdit = (post: Prompt) => {
-      router.push(`/update-prompt?id=${post._id}`);
+   const handleEdit = (prompt: Prompt) => {
+      router.push(`/update-prompt?id=${prompt._id}`);
       // now update the prompt state arr
-      const updatedPosts: Prompt[] = prompts.arr.map((item: any) => {
-         if (item._id === post._id) {
-            return { ...item, prompt: post.prompt };
-         }
-         return item;
+      const updatedPrompts: Prompt[] = prompts.arr.map((item: any) => {
+         return item._id === prompt._id ? prompt : item;
       });
-      setPromptState({ arr: updatedPosts });
+      setPrompts(updatedPrompts);
    };
 
-   const handleDelete = async (post: any) => {
+   const handleDelete = async (prompt: any) => {
       const hasConfirmed = confirm(
          "Are you sure you want to delete this prompt?"
       );
 
       if (hasConfirmed) {
          try {
-            await fetch(`/api/prompt/${post._id.toString()}`, {
+            await fetch(`/api/prompt/${prompt._id.toString()}`, {
                method: "DELETE",
             });
 
-            setPromptState({
-               ...prompts,
-               arr: prompts.arr.filter((item: any) => item._id !== post._id),
-            });
+            setPrompts(
+               prompts.arr.filter((item: any) => item._id !== prompt._id)
+            );
          } catch (error) {
             console.log(error);
          }

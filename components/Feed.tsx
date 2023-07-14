@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 
 import PromptCard from "./PromptCard";
-import { setPromptState } from "store/reducer/prompt";
+import { setPrompts } from "store/reducer/prompt";
 import { dispatch } from "store";
 
 interface PromptCardListProps {
@@ -37,11 +37,10 @@ const Feed = () => {
 
    const fetchPosts = async () => {
       const response = await fetch("/api/prompt");
-      const prompts = await response.json();
-      console.log("....prompts");
-      console.log(prompts);
-      setAllPosts(prompts);
-      //dispatch(setPromptState({ arr: prompts }));
+      const promptArr = await response.json();
+
+      dispatch(setPrompts(promptArr));
+      setAllPosts(promptArr);
    };
 
    useEffect(() => {

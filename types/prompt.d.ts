@@ -14,6 +14,7 @@ export interface Prompt {
 }
 export interface PromptState {
    arr: Prompt[];
+   init: boolean;
 }
 
 export interface PostCardProps {
