@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
 import Profile from "@/components/Profile";
-import { clearPrompts, setPrompts } from "store/reducer/prompt";
+import { setPrompts } from "store/reducer/prompt";
 import { useSelector } from "react-redux";
 import { Prompt, PromptState } from "types/prompt";
 import { dispatch } from "store";
@@ -17,6 +17,7 @@ const MyProfile = () => {
    const { data: session } = useSession();
    const user: UserState = useSelector((state: any) => state.user);
    const prompts: PromptState = useSelector((state: any) => state.prompts);
+   const [userPosts, setUserPosts] = useState([]);
 
    dispatch(setUser({ ...user, details: session?.user }));
 
@@ -31,6 +32,16 @@ const MyProfile = () => {
 
       if (session?.user.id) fetchPosts();
    }, [session?.user.id]);
+
+   const fetchPosts = async () => {
+      const response = await fetch("/api/prompt");
+      const data = await response.json();
+      setUserPosts(data);
+   };
+
+   useEffect(() => {
+      fetchPosts();
+   }, []);
 
    const handleEdit = (prompt: Prompt) => {
       router.push(`/update-prompt?id=${prompt._id}`);
@@ -62,13 +73,14 @@ const MyProfile = () => {
    };
 
    return (
-      <Profile
-         name='My'
-         desc='Welcome to your personalized profile page. Here is where we keep track of all your prompts.'
-         handleEdit={handleEdit}
-         handleDelete={handleDelete}
-         data={undefined}
-      />
+      <>Profile</>
+      // <Profile
+      //    name='My'
+      //    desc='Welcome to your personalized profile page. Here is where we keep track of all your prompts.'
+      //    handleEdit={handleEdit}
+      //    handleDelete={handleDelete}
+      //    data={userPosts}
+      // />
    );
 };
 

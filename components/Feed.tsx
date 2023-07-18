@@ -44,6 +44,7 @@ const Feed = () => {
    };
 
    useEffect(() => {
+      console.log("fetching posts ...");
       fetchPosts();
    }, []);
 

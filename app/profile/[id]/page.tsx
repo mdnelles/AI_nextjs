@@ -28,13 +28,14 @@ const UserProfile = ({ params }: UserProfileProps) => {
    }, [params.id]);
 
    return (
-      <Profile
-         name={userName}
-         desc={`Welcome to ${userName}'s personalized profile page. Explore ${userName}'s exceptional prompts and be inspired by the power of their imagination`}
-         data={userPosts}
-         handleEdit={handleEdit}
-         handleDelete={handleDelete}
-      />
+      <>Profile</>
+      // <Profile
+      //    name={userName}
+      //    desc={`Welcome to ${userName}'s personalized profile page. Explore ${userName}'s exceptional prompts and be inspired by the power of their imagination`}
+      //    data={userPosts}
+      //    handleEdit={handleEdit}
+      //    handleDelete={handleDelete}
+      // />
    );
 };
 
