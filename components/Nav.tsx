@@ -28,7 +28,7 @@ const Nav = () => {
    const handleSignIn = async (provider: any) => {
       setSigningIn(true);
       await signIn(provider.id);
-      setTimeout(() => setSigningIn(false), 1000);
+      setTimeout(() => setSigningIn(false), 500);
    };
 
    useEffect(() => {
