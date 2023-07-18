@@ -4,6 +4,9 @@ import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { signIn, signOut, useSession, getProviders } from "next-auth/react";
+import { clearUser } from "@store/reducer/user";
+import { dispatch } from "@store/index";
+import { clearPrompts } from "@store/reducer/prompt";
 
 const Nav = () => {
    const { data: session, status } = useSession();
@@ -16,6 +19,8 @@ const Nav = () => {
    const handleSignOut = async () => {
       setSigningOut(true);
       await signOut();
+      dispatch(clearPrompts());
+      dispatch(clearUser());
       setTimeout(() => setSigningOut(false), 500);
       window.location.href = "/";
    };
