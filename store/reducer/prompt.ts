@@ -21,9 +21,7 @@ export const promptSlice = createSlice({
          const promptId = action.payload;
          state.arr = state.arr.filter((prompt) => prompt._id !== promptId);
       },
-      clearPrompts: (state) => {
-         state.arr = [];
-      },
+      clearPrompts: () => initialState,
    },
 });
 
