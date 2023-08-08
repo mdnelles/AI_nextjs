@@ -6,7 +6,7 @@ const size = 50;
 const Home = () => (
    <section className='w-full flex-center flex-col'>
       <h1 className='head_text text-center mb-4'>
-         AI Wall Post
+         AI Question Wall
          <br className='max-md:hidden' />
       </h1>
       <div className='flex justify-center gap-2'>
